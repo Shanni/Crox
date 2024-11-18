@@ -12,9 +12,11 @@ import "./MyERC20Token.sol";
 import "./BridgeActions.sol";
 
 contract TokenMinterReceiverOnBulletin is ITeleporterReceiver {
-    TeleporterRegistry public immutable teleporterRegistry =
-        TeleporterRegistry(0x827364Da64e8f8466c23520d81731e94c8DDe510);
+    // TeleporterRegistry public immutable teleporterRegistry =
+    //     TeleporterRegistry(0x67cAC2Bb581B6F4A53bA65353EE63C5eA8788c7B);
     address public tokenAddress;
+    string public tokenName;
+    string public tokenTick;
 
     function receiveTeleporterMessage(bytes32, address, bytes calldata message) external {
         // Only a Teleporter Messenger registered in the registry can deliver a message.
@@ -28,9 +30,11 @@ contract TokenMinterReceiverOnBulletin is ITeleporterReceiver {
         if (actionType == BridgeAction.createToken) {
             (string memory name, string memory symbol) = abi.decode(paramsData, (string, string));
             tokenAddress = address(new myToken(name, symbol));
+            tokenName = name;
+            tokenTick = symbol;
         } else if (actionType == BridgeAction.mintToken) {
             (address recipient, uint256 amount) = abi.decode(paramsData, (address, uint256));
-            myToken(tokenAddress).mint(recipient, amount);
+            myToken(0x5aa01B3b5877255cE50cc55e8986a7a5fe29C70e).mint(recipient, amount);
         } else {
             revert("Receiver: invalid action");
         }

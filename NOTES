@@ -1,0 +1,44 @@
+Important NOTES
+forge create --rpc-url local-c --private-key 0x330f45c89a5ec5c5ed1c7a970ad0e209e4cb62bf968f27a123966889a0db597b contracts/interchain-messaging/send-receive/senderOnCChain.sol:SenderOnCChain
+
+
+PrivateKey-ewoqjPgs23SPRN6f1hw4F2ha5s8FhA6xYcVox8KRCeQ4HySsx
+
+cross chain:
+to L1A
+export SENDER_ADDRESS=0x7B4982e1F7ee384F206417Fb851a1EB143c513F9
+
+to myblockchain
+export SENDER_ADDRESS=0x55a4eDd8A2c051079b426E9fbdEe285368824a89
+
+forge create --rpc-url local-c --private-key 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027 contracts/interchain-messaging/send-receive/senderOnCChain.sol:SenderOnCChain
+
+forge create --rpc-url https://shiny-space-rotary-phone-4vgxvgjjj425gxg-9650.app.github.dev/ext/bc/L1A/rpc --private-key 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027 contracts/interchain-messaging/send-receive/receiverOnSubnet.sol:ReceiverOnSubnet
+
+
+forge create --rpc-url myblockchain --private-key $PK contracts/interchain-messaging/send-receive/receiverOnSubnet.sol:ReceiverOnSubnet
+
+
+cast call --rpc-url https://shiny-space-rotary-phone-4vgxvgjjj425gxg-9650.app.github.dev/ext/bc/L1A/rpc $RECEIVER_ADDRESS "lastMessage()(string)"
+
+
+
+cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendMessage(address,string)" $RECEIVER_ADDRESS "YOOOOO"
+
+forge create --rpc-url http://127.0.0.1:9650/ext/bc/myblockchain/rpc --private-key $PK contracts/interchain-messaging/send-roundtrip/receiverOnSubnet.sol:ReceiverOnSubnet
+
+myblockchain
+prefunding address 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with balance 1000000000000000000000000
+
+0x52C84043CD9c865236f11d9Fc9F56aa003c1f922
+export RECEIVER_ADDRESS=0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25
+
+export SENDER_ADDRESS=0xa1E47689f396fED7d18D797d9D31D727d2c0d483
+
+
+http://127.0.0.1:9650/ext/bc/bq6cpMv7M4sR9rVoZpjgNxSAUN47DrfBTndLWNq6dp4kR42T6/rpc  
+
+
+
+calculator tutorial:
+export SENDER_ADDRESS=0x5DB9A7629912EBF95876228C24A848de0bfB43A9
