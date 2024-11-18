@@ -1,9 +1,27 @@
 import { fuji } from "./chains/definitions/fuji";
 import { echo } from "./chains/definitions/echo";
 import { dispatch } from "./chains/definitions/dispatch";
+import { shanniChain } from "./chains/definitions/shanni";
 
-export const CHAINS = [fuji, echo, dispatch];
+export const CHAINS = [fuji, echo, dispatch, shanniChain];
 export const TOKENS = [
+    {
+        address: "0x4Ac1d98D9cEF99EC6546dEd4Bd550b0b287aaD6D",
+        name: "TOK",
+        symbol: "TOK",
+        decimals: 18,
+        chain_id: 43112,
+        supports_ictt: true,
+        is_transferer: true,
+        mirrors: [
+            {
+                address: "0xa3E7e10bf4bc9F040D01a7423B199E4E5D444ab3",
+                transferer: "0xa3E7e10bf4bc9F040D01a7423B199E4E5D444ab3",
+                chain_id: 123,
+                decimals: 18
+            }
+        ]
+    },
     {
         address: "native",
         name: "Avalanche",
@@ -11,23 +29,23 @@ export const TOKENS = [
         decimals: 18,
         chain_id: 43113
     },
-    {
-        address: "0x8D6f0E153B1D4Efb46c510278Db3678Bb1Cc823d",
-        name: "TOK",
-        symbol: "TOK",
-        decimals: 18,
-        chain_id: 43113,
-        supports_ictt: true,
-        transferer: "0xD63c60859e6648b20c38092cCceb92c5751E32fF",
-        mirrors: [
-            {
-                address: "0x8D6f0E153B1D4Efb46c510278Db3678Bb1Cc823d",
-                transferer: "0x8D6f0E153B1D4Efb46c510278Db3678Bb1Cc823d",
-                chain_id: 173750,
-                decimals: 18
-            }
-        ]
-    },
+    // {
+    //     address: "0x8D6f0E153B1D4Efb46c510278Db3678Bb1Cc823d",
+    //     name: "TOK",
+    //     symbol: "TOK",
+    //     decimals: 18,
+    //     chain_id: 43113,
+    //     supports_ictt: true,
+    //     transferer: "0xD63c60859e6648b20c38092cCceb92c5751E32fF",
+    //     mirrors: [
+    //         {
+    //             address: "0x8D6f0E153B1D4Efb46c510278Db3678Bb1Cc823d",
+    //             transferer: "0x8D6f0E153B1D4Efb46c510278Db3678Bb1Cc823d",
+    //             chain_id: 173750,
+    //             decimals: 18
+    //         }
+    //     ]
+    // },
     {
         address: "0x8D6f0E153B1D4Efb46c510278Db3678Bb1Cc823d",
         name: "TOK.e",
